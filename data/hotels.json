@@ -1,0 +1,188 @@
+{
+  "hotels": [
+    {
+      "id": "FQH",
+      "name": "杭州柏悦酒店",
+      "district_id": "XH",
+      "description": "奢华五星级酒店，坐拥西湖美景",
+      "category": "五星级",
+      "coordinates": {
+        "latitude": 30.2587,
+        "longitude": 120.1485
+      },
+      "price_range": {
+        "min": 1800,
+        "max": 5000,
+        "currency": "CNY",
+        "level": "高端",
+        "notes": "旺季价格上浮30%"
+      },
+      "rooms": [
+        {
+          "type": "豪华湖景房",
+          "size_sqm": 45,
+          "price": 2500,
+          "features": [
+            "无烟房",
+            "双床",
+            "湖景",
+            "高层"
+          ]
+        },
+        {
+          "type": "行政套房",
+          "size_sqm": 65,
+          "price": 3800,
+          "features": [
+            "无烟房",
+            "大床",
+            "湖景",
+            "行政礼遇"
+          ]
+        }
+      ],
+      "amenities": [
+        "健身中心",
+        "游泳池",
+        "SPA",
+        "商务中心",
+        "叫车服务"
+      ],
+      "transportation": {
+        "from_airport": {
+          "taxi_time": "45分钟",
+          "distance_km": 35
+        },
+        "nearby_stations": [
+          "龙翔桥地铁站",
+          "定安路地铁站"
+        ]
+      },
+      "contact": {
+        "phone": "0571-87654321",
+        "address": "西湖区浦春路28号",
+        "email": "reservation@parkhy.com"
+      }
+    },
+    {
+      "id": "ZJH",
+      "name": "浙江饭店",
+      "district_id": "XH",
+      "description": "商务型四星级酒店",
+      "category": "四星级",
+      "coordinates": {
+        "latitude": 30.2542,
+        "longitude": 120.1485
+      },
+      "price_range": {
+        "min": 600,
+        "max": 1200,
+        "currency": "CNY",
+        "level": "中等",
+        "notes": "节假日需提前预订"
+      },
+      "rooms": [
+        {
+          "type": "商务标准间",
+          "size_sqm": 32,
+          "price": 680,
+          "features": [
+            "无烟房",
+            "双床",
+            "市景"
+          ]
+        },
+        {
+          "type": "高级大床房",
+          "size_sqm": 38,
+          "price": 880,
+          "features": [
+            "无烟房",
+            "大床",
+            "城景"
+          ]
+        }
+      ],
+      "amenities": [
+        "免费停车",
+        "健身房",
+        "餐厅",
+        "会议室"
+      ],
+      "transportation": {
+        "from_airport": {
+          "taxi_time": "50分钟",
+          "distance_km": 38
+        },
+        "nearby_stations": [
+          "西湖文化广场地铁站"
+        ]
+      },
+      "contact": {
+        "phone": "0571-88123456",
+        "address": "西湖区解放路258号"
+      }
+    },
+    {
+      "id": "YDH",
+      "name": "云顶精品酒店",
+      "district_id": "XH",
+      "description": "精品艺术设计酒店",
+      "category": "精品酒店",
+      "coordinates": {
+        "latitude": 30.2551,
+        "longitude": 120.1447
+      },
+      "price_range": {
+        "min": 400,
+        "max": 800,
+        "currency": "CNY",
+        "level": "经济",
+        "notes": "周末略有上浮"
+      },
+      "rooms": [
+        {
+          "type": "艺术大床房",
+          "size_sqm": 28,
+          "price": 458,
+          "features": [
+            "无烟房",
+            "大床",
+            "艺术装饰"
+          ]
+        },
+        {
+          "type": "文艺双床房",
+          "size_sqm": 30,
+          "price": 498,
+          "features": [
+            "无烟房",
+            "双床",
+            "庭院景观"
+          ]
+        }
+      ],
+      "amenities": [
+        "咖啡厅",
+        "艺术廊",
+        "图书角",
+        "免费单车"
+      ],
+      "transportation": {
+        "from_airport": {
+          "taxi_time": "55分钟",
+          "distance_km": 40
+        },
+        "nearby_stations": [
+          "长桥地铁站",
+          "西湖公交站"
+        ]
+      },
+      "contact": {
+        "phone": "0571-89876543",
+        "address": "西湖区曙光路66号",
+        "email": "service@yunding.com"
+      }
+    }
+  ]
+}

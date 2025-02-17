@@ -67,6 +67,7 @@ type Hotel struct {
 		Min      float64 `json:"min"`
 		Max      float64 `json:"max"`
 		Currency string  `json:"currency"`
+		Level    string  `json:"level"` // 经济, 中等, 高端
 		Notes    string  `json:"notes"`
 	} `json:"price_range"`
 	Rooms     []Room    `json:"rooms"`

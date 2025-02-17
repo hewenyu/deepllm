@@ -10,7 +10,7 @@ import (
 
 func main() {
 	// Initialize data store
-	store := data.NewStore("../../data")
+	store := data.NewStore("./data")
 
 	// Load all data
 	ctx := context.Background()
