@@ -4,6 +4,7 @@ import (
 	"context"
 	"deepllm/components/mock"
 	"deepllm/components/ollama"
+	"deepllm/components/tools"
 	"deepllm/internal/data"
 	"fmt"
 	"log"
@@ -31,41 +32,55 @@ func main() {
 	}
 	chatModel := ollama.NewChatModel(ollamaBaseURL, ollamaModel)
 
-	// Create a simple tool
-	weatherTool := mock.NewMockTool(
-		"get_weather",
-		"获取指定位置的天气预报",
-		func(ctx context.Context, args map[string]interface{}) (map[string]interface{}, error) {
-			// Mock implementation
-			return map[string]interface{}{
-				"temperature": 25.0,
-				"condition":   "晴朗",
-				"humidity":    60.0,
-			}, nil
-		},
-	)
+	// Create tourism tools
+	tourismTools := tools.CreateTourismTools(dataQuery)
 
-	// Create a simple prompt
+	// Create system prompt
+	systemPrompt := `你是一位专业的杭州旅游助手，可以为游客提供景点、美食、住宿和天气等方面的建议。
+你可以使用以下工具来帮助回答问题：
+- search_attractions: 搜索景点信息
+- search_restaurants: 搜索餐厅信息
+- search_hotels: 搜索酒店信息
+- get_weather: 查询天气信息
+
+请根据用户的需求，合理使用这些工具来提供专业的建议。回答要详细、准确，并注意以下几点：
+1. 推荐时要考虑位置、价格、评分等因素
+2. 解释推荐的理由，帮助用户做出选择
+3. 如果天气不好，要提供相应的替代建议
+4. 注意不同景点的开放时间
+5. 所有回答使用中文`
+
+	// Create user prompt
+	userPrompt := `我计划明天去西湖游玩，想知道：
+1. 天气情况如何？
+2. 有哪些值得去的景点？
+3. 中午可以在哪里吃饭？
+请给我一些建议。`
+
+	// Create messages
 	messages := []*mock.Message{
 		{
 			Role:    "system",
-			Content: "你是一位专业的杭州旅游助手，可以为游客提供天气、景点、美食等方面的建议。请用中文回答用户的问题。",
+			Content: systemPrompt,
 		},
 		{
 			Role:    "user",
-			Content: "西湖今天天气怎么样？适合去划船吗？",
+			Content: userPrompt,
 		},
 	}
 
+	// Bind tools to chat model
+	chatModel.BindTools(tourismTools)
+
 	// Call the model
 	ctx := context.Background()
-	chatModel.BindTools([]mock.Tool{weatherTool})
 	response, err := chatModel.Generate(ctx, messages)
 	if err != nil {
 		log.Fatalf("调用模型失败: %v", err)
 	}
 
-	fmt.Printf("助手回答:\n%s\n", response.Content)
+	// Output result
+	fmt.Printf("\n=== 旅游助手回答 ===\n%s\n", response.Content)
 
 	// Demonstrate data querying
 	fmt.Println("\n数据查询演示:")
@@ -86,7 +101,7 @@ func main() {
 	fmt.Printf("\n在西湖2公里范围内找到%d个景点\n", len(nearbyAttractions))
 
 	// Filter by preferences
-	preferences := []string{"cultural", "historical"}
+	preferences := []string{"自然风光", "历史文化"}
 	filteredAttractions := dataQuery.FilterAttractionsByPreferences(nearbyAttractions, preferences)
 	fmt.Printf("\n找到%d个符合偏好的景点（文化、历史）\n", len(filteredAttractions))
 
