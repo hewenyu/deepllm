@@ -17,6 +17,8 @@
 *.swp
 *.swo
 
+**/doc/
+
 # Dependency directories
 vendor/
 
