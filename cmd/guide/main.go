@@ -80,12 +80,17 @@ func main() {
 	}
 
 	// Output result
-	fmt.Printf("\n=== 旅游助手回答 ===\n%s\n", response.Content)
+	fmt.Printf("\n=== 旅游助手回答 ===\n")
+	if response != nil && response.Content != "" {
+		fmt.Printf("%s\n", response.Content)
+	} else {
+		fmt.Println("抱歉，助手暂时无法回答您的问题。")
+	}
 
-	// Demonstrate data querying
-	fmt.Println("\n数据查询演示:")
+	// 数据查询演示
+	fmt.Println("\n=== 数据查询演示 ===")
 
-	// Load and filter attractions
+	// 加载并筛选景点
 	attractions, err := dataLoader.LoadAttractions()
 	if err != nil {
 		log.Fatalf("加载景点数据失败: %v", err)
@@ -97,39 +102,66 @@ func main() {
 		Longitude: 120.1315,
 	}
 
-	nearbyAttractions := data.FindNearbyAttractions(attractions, location, 2.0) // Within 2km
-	fmt.Printf("\n在西湖2公里范围内找到%d个景点\n", len(nearbyAttractions))
+	// 扩大搜索范围到5公里
+	nearbyAttractions := data.FindNearbyAttractions(attractions, location, 5.0)
+	fmt.Printf("\n【附近景点】\n")
+	fmt.Printf("在西湖5公里范围内找到%d个景点\n", len(nearbyAttractions))
 
-	// Filter by preferences
-	preferences := []string{"自然风光", "历史文化"}
+	// 按偏好筛选
+	preferences := []string{"自然风光", "人文景观", "历史文化"}
 	filteredAttractions := dataQuery.FilterAttractionsByPreferences(nearbyAttractions, preferences)
-	fmt.Printf("\n找到%d个符合偏好的景点（文化、历史）\n", len(filteredAttractions))
+	fmt.Printf("\n【推荐景点】\n")
+	fmt.Printf("符合偏好的景点数量：%d（偏好：%s）\n", len(filteredAttractions), "自然风光、人文景观、历史文化")
 
-	// Sort by rating
+	// 按评分排序并展示详情
 	sortedAttractions := dataQuery.SortByRating(filteredAttractions)
-	fmt.Println("\n评分最高的景点:")
+	fmt.Println("\n【景点排名】（按评分排序）")
 	for i, attraction := range sortedAttractions {
-		if i >= 3 {
+		if i >= 5 { // 显示前5个景点
 			break
 		}
-		fmt.Printf("%d. %s (评分: %.1f)\n", i+1, attraction.Name, attraction.Rating)
+		fmt.Printf("%d. %s\n   评分: %.1f  价格: %.0f元\n   类别: %v\n   描述: %s\n\n",
+			i+1,
+			attraction.Name,
+			attraction.Rating,
+			attraction.Price,
+			attraction.Category,
+			attraction.Description,
+		)
 	}
 
-	// Demonstrate weather querying
+	// 加载并显示天气信息
 	weatherData, err := dataLoader.LoadWeather()
 	if err != nil {
 		log.Fatalf("加载天气数据失败: %v", err)
 	}
 
-	weather, found := dataQuery.GetWeatherForDate(weatherData, time.Now(), location)
+	fmt.Println("【天气信息】")
+	today := time.Now()
+	weather, found := dataQuery.GetWeatherForDate(weatherData, today, location)
 	if found {
-		fmt.Printf("\n%s当前天气:\n", location.Name)
-		fmt.Printf("气温: %.1f°C - %.1f°C\n", weather.Temperature.Min, weather.Temperature.Max)
-		fmt.Printf("天气状况: %s\n", translateWeatherCondition(weather.Condition))
-		fmt.Printf("湿度: %.1f%%\n", weather.Humidity)
-		fmt.Printf("风速: %.1f公里/小时\n", weather.WindSpeed)
+		fmt.Printf("西湖今日天气:\n")
+		fmt.Printf("- 气温: %.1f°C - %.1f°C\n", weather.Temperature.Min, weather.Temperature.Max)
+		fmt.Printf("- 天气: %s\n", translateWeatherCondition(weather.Condition))
+		fmt.Printf("- 湿度: %.1f%%\n", weather.Humidity)
+		fmt.Printf("- 风速: %.1f公里/小时\n", weather.WindSpeed)
+		if weather.Precipitation > 0 {
+			fmt.Printf("- 降水量: %.1f毫米\n", weather.Precipitation)
+		}
 	} else {
-		fmt.Println("\n当前日期没有可用的天气数据")
+		fmt.Println("暂无今日天气数据")
+		// 尝试获取最近的天气数据
+		for _, w := range weatherData {
+			fmt.Printf("\n最近天气预报 (%s):\n", w.Date.Format("2006-01-02"))
+			fmt.Printf("- 气温: %.1f°C - %.1f°C\n", w.Temperature.Min, w.Temperature.Max)
+			fmt.Printf("- 天气: %s\n", translateWeatherCondition(w.Condition))
+			fmt.Printf("- 湿度: %.1f%%\n", w.Humidity)
+			fmt.Printf("- 风速: %.1f公里/小时\n", w.WindSpeed)
+			if w.Precipitation > 0 {
+				fmt.Printf("- 降水量: %.1f毫米\n", w.Precipitation)
+			}
+			break
+		}
 	}
 }
 
