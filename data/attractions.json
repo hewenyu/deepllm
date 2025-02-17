@@ -1,0 +1,82 @@
+[
+  {
+    "id": "wl001",
+    "name": "West Lake",
+    "location": {
+      "name": "West Lake",
+      "latitude": 30.2587,
+      "longitude": 120.1315
+    },
+    "description": "A UNESCO World Heritage site featuring beautiful gardens, temples, pagodas, and artificial islands.",
+    "category": ["natural", "cultural", "outdoor"],
+    "price": 0.0,
+    "open_hours": ["00:00-24:00"],
+    "tags": ["scenic", "peaceful", "historical"],
+    "rating": 4.8,
+    "images": ["west_lake_1.jpg", "west_lake_2.jpg"]
+  },
+  {
+    "id": "lft001",
+    "name": "Lingyin Temple",
+    "location": {
+      "name": "Lingyin Temple",
+      "latitude": 30.2421,
+      "longitude": 120.0935
+    },
+    "description": "One of the largest and most visited Buddhist temples in China, featuring ancient architecture and rock carvings.",
+    "category": ["cultural", "religious", "indoor"],
+    "price": 30.0,
+    "open_hours": ["07:00-17:30"],
+    "tags": ["buddhist", "historical", "spiritual"],
+    "rating": 4.6,
+    "images": ["lingyin_temple_1.jpg", "lingyin_temple_2.jpg"]
+  },
+  {
+    "id": "lbp001",
+    "name": "Leifeng Pagoda",
+    "location": {
+      "name": "Leifeng Pagoda",
+      "latitude": 30.2379,
+      "longitude": 120.1489
+    },
+    "description": "A five-story tall tower offering panoramic views of West Lake and its surroundings.",
+    "category": ["cultural", "historical", "outdoor"],
+    "price": 40.0,
+    "open_hours": ["08:00-17:30"],
+    "tags": ["scenic", "historical", "architectural"],
+    "rating": 4.5,
+    "images": ["leifeng_pagoda_1.jpg", "leifeng_pagoda_2.jpg"]
+  },
+  {
+    "id": "xhs001",
+    "name": "Xixi National Wetland Park",
+    "location": {
+      "name": "Xixi Wetland",
+      "latitude": 30.2728,
+      "longitude": 120.0632
+    },
+    "description": "The first and only national wetland park in China, combining urban life, farming, and culture.",
+    "category": ["natural", "cultural", "outdoor"],
+    "price": 80.0,
+    "open_hours": ["08:00-17:00"],
+    "tags": ["wetland", "ecological", "peaceful"],
+    "rating": 4.4,
+    "images": ["xixi_wetland_1.jpg", "xixi_wetland_2.jpg"]
+  },
+  {
+    "id": "qhf001",
+    "name": "Qinghefang Ancient Street",
+    "location": {
+      "name": "Qinghefang Street",
+      "latitude": 30.2665,
+      "longitude": 120.1688
+    },
+    "description": "A well-preserved ancient street showcasing traditional architecture, local snacks, and handicrafts.",
+    "category": ["cultural", "shopping", "outdoor"],
+    "price": 0.0,
+    "open_hours": ["08:30-22:00"],
+    "tags": ["shopping", "food", "historical"],
+    "rating": 4.3,
+    "images": ["qinghefang_1.jpg", "qinghefang_2.jpg"]
+  }
+] 

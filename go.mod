@@ -1,5 +1,5 @@
-module github.com/hewenyu/deepllm
+module deepllm
 
-go 1.22.0
+go 1.21
 
-toolchain go1.23.6
+replace github.com/cloudwego/eino => github.com/cloudwego/eino v0.1.0

@@ -1,0 +1,82 @@
+[
+  {
+    "date": "2024-02-18T00:00:00Z",
+    "location": {
+      "name": "West Lake",
+      "latitude": 30.2587,
+      "longitude": 120.1315
+    },
+    "temperature": {
+      "min": 8.0,
+      "max": 16.0
+    },
+    "condition": "sunny",
+    "humidity": 65.0,
+    "wind_speed": 12.0,
+    "precipitation": 0.0
+  },
+  {
+    "date": "2024-02-19T00:00:00Z",
+    "location": {
+      "name": "West Lake",
+      "latitude": 30.2587,
+      "longitude": 120.1315
+    },
+    "temperature": {
+      "min": 10.0,
+      "max": 18.0
+    },
+    "condition": "partly cloudy",
+    "humidity": 70.0,
+    "wind_speed": 15.0,
+    "precipitation": 0.0
+  },
+  {
+    "date": "2024-02-20T00:00:00Z",
+    "location": {
+      "name": "West Lake",
+      "latitude": 30.2587,
+      "longitude": 120.1315
+    },
+    "temperature": {
+      "min": 12.0,
+      "max": 20.0
+    },
+    "condition": "cloudy",
+    "humidity": 75.0,
+    "wind_speed": 18.0,
+    "precipitation": 5.0
+  },
+  {
+    "date": "2024-02-21T00:00:00Z",
+    "location": {
+      "name": "West Lake",
+      "latitude": 30.2587,
+      "longitude": 120.1315
+    },
+    "temperature": {
+      "min": 11.0,
+      "max": 17.0
+    },
+    "condition": "light rain",
+    "humidity": 80.0,
+    "wind_speed": 20.0,
+    "precipitation": 15.0
+  },
+  {
+    "date": "2024-02-22T00:00:00Z",
+    "location": {
+      "name": "West Lake",
+      "latitude": 30.2587,
+      "longitude": 120.1315
+    },
+    "temperature": {
+      "min": 9.0,
+      "max": 15.0
+    },
+    "condition": "sunny",
+    "humidity": 60.0,
+    "wind_speed": 10.0,
+    "precipitation": 0.0
+  }
+] 

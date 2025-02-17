@@ -1,0 +1,77 @@
+[
+  {
+    "id": "gh001",
+    "name": "Grand Hyatt Hangzhou",
+    "location": {
+      "name": "Grand Hyatt",
+      "latitude": 30.2584,
+      "longitude": 120.1552
+    },
+    "stars": 5,
+    "price_per_night": 1800.0,
+    "amenities": ["lake view", "spa", "pool", "gym", "wifi", "restaurant", "bar", "room service", "wheelchair accessible"],
+    "description": "Luxury hotel offering stunning views of West Lake, featuring world-class amenities and exceptional service.",
+    "rating": 4.8,
+    "images": ["grand_hyatt_1.jpg", "grand_hyatt_2.jpg"]
+  },
+  {
+    "id": "fs001",
+    "name": "Four Seasons Hotel Hangzhou at West Lake",
+    "location": {
+      "name": "Four Seasons",
+      "latitude": 30.2433,
+      "longitude": 120.1289
+    },
+    "stars": 5,
+    "price_per_night": 2200.0,
+    "amenities": ["lake view", "garden", "spa", "pool", "gym", "wifi", "restaurant", "bar", "room service"],
+    "description": "Set amidst traditional Chinese gardens on the edge of West Lake, offering unparalleled luxury and tranquility.",
+    "rating": 4.9,
+    "images": ["four_seasons_1.jpg", "four_seasons_2.jpg"]
+  },
+  {
+    "id": "wh001",
+    "name": "Wyndham Grand Plaza Royale Hangzhou",
+    "location": {
+      "name": "Wyndham Grand",
+      "latitude": 30.2676,
+      "longitude": 120.1523
+    },
+    "stars": 4,
+    "price_per_night": 800.0,
+    "amenities": ["wifi", "restaurant", "gym", "business center", "room service", "wheelchair accessible"],
+    "description": "Contemporary hotel in the heart of Hangzhou, offering comfortable accommodations and modern amenities.",
+    "rating": 4.4,
+    "images": ["wyndham_1.jpg", "wyndham_2.jpg"]
+  },
+  {
+    "id": "mw001",
+    "name": "Merchant Marco Hotel",
+    "location": {
+      "name": "Merchant Marco",
+      "latitude": 30.2589,
+      "longitude": 120.1687
+    },
+    "stars": 4,
+    "price_per_night": 600.0,
+    "amenities": ["wifi", "restaurant", "business center", "laundry service", "wheelchair accessible"],
+    "description": "Boutique hotel combining modern comfort with traditional Chinese elements, located near shopping areas.",
+    "rating": 4.3,
+    "images": ["merchant_marco_1.jpg", "merchant_marco_2.jpg"]
+  },
+  {
+    "id": "zh001",
+    "name": "Zhejiang Hotel Hangzhou",
+    "location": {
+      "name": "Zhejiang Hotel",
+      "latitude": 30.2542,
+      "longitude": 120.1675
+    },
+    "stars": 3,
+    "price_per_night": 400.0,
+    "amenities": ["wifi", "restaurant", "parking", "laundry service"],
+    "description": "Traditional hotel offering good value accommodations with convenient access to West Lake and shopping areas.",
+    "rating": 4.1,
+    "images": ["zhejiang_hotel_1.jpg", "zhejiang_hotel_2.jpg"]
+  }
+] 

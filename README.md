@@ -7,7 +7,7 @@
 ```
 ├── components/
 │   └── agent/
-│       ├── accommodation/  # 住宿推荐智能体
+│       ├── accommodation/ # 住宿推荐智能体
 │       ├── dining/        # 餐饮推荐智能体
 │       ├── weather/       # 天气建议智能体
 │       ├── planner/       # 行程规划智能体
@@ -19,12 +19,8 @@
 │       ├── query.go       # 数据查询接口
 │       └── distance.go    # 距离计算工具
 ├── data/
-│   ├── districts.json     # 区域数据
-│   ├── attractions.json   # 景点数据
-│   ├── restaurants.json   # 餐厅数据
-│   ├── hotels.json       # 酒店数据
-│   └── weather.json      # 天气数据
-└── example/
+│   ├── # 区域数据 景点数据 餐厅数据 酒店数据 天气数据
+└── cmd/
     ├── guide/            # 基础使用示例
     └── multiagent/       # 多智能体示例
 ```
@@ -66,10 +62,10 @@ go mod tidy
 2. 运行示例
 ```bash
 # 运行基础示例
-go run example/guide/main.go
+go run cmd/guide/main.go
 
 # 运行多智能体示例
-go run example/multiagent/main.go
+go run cmd/multiagent/main.go
 ```
 
 3. 示例输出

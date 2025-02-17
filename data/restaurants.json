@@ -1,0 +1,77 @@
+[
+  {
+    "id": "lw001",
+    "name": "Lou Wai Lou",
+    "location": {
+      "name": "Lou Wai Lou",
+      "latitude": 30.2576,
+      "longitude": 120.1485
+    },
+    "cuisine": ["local", "hangzhou", "chinese"],
+    "price_range": "$$$",
+    "rating": 4.7,
+    "open_hours": ["10:30-14:00", "16:30-21:00"],
+    "description": "A time-honored restaurant serving authentic Hangzhou cuisine with a view of West Lake.",
+    "tags": ["traditional", "lake view", "famous"]
+  },
+  {
+    "id": "gp001",
+    "name": "Grandma's Home",
+    "location": {
+      "name": "Grandma's Home",
+      "latitude": 30.2668,
+      "longitude": 120.1686
+    },
+    "cuisine": ["local", "homestyle", "chinese"],
+    "price_range": "$$",
+    "rating": 4.5,
+    "open_hours": ["10:00-22:00"],
+    "description": "Popular local chain restaurant serving homestyle Hangzhou dishes.",
+    "tags": ["casual", "family-friendly", "affordable"]
+  },
+  {
+    "id": "zh001",
+    "name": "Zhang Sheng Ji",
+    "location": {
+      "name": "Zhang Sheng Ji",
+      "latitude": 30.2662,
+      "longitude": 120.1690
+    },
+    "cuisine": ["local", "seafood", "chinese"],
+    "price_range": "$$",
+    "rating": 4.4,
+    "open_hours": ["10:30-21:30"],
+    "description": "Famous for its fresh seafood and local specialties.",
+    "tags": ["seafood", "local favorite", "traditional"]
+  },
+  {
+    "id": "wf001",
+    "name": "Waipojia",
+    "location": {
+      "name": "Waipojia",
+      "latitude": 30.2589,
+      "longitude": 120.1687
+    },
+    "cuisine": ["local", "homestyle", "chinese"],
+    "price_range": "$$",
+    "rating": 4.3,
+    "open_hours": ["10:30-21:00"],
+    "description": "Cozy restaurant serving authentic local dishes in a traditional setting.",
+    "tags": ["homestyle", "casual", "authentic"]
+  },
+  {
+    "id": "hy001",
+    "name": "Hyatt 28",
+    "location": {
+      "name": "Hyatt 28",
+      "latitude": 30.2584,
+      "longitude": 120.1552
+    },
+    "cuisine": ["international", "fusion", "fine dining"],
+    "price_range": "$$$$",
+    "rating": 4.6,
+    "open_hours": ["06:30-22:30"],
+    "description": "Upscale restaurant in Grand Hyatt offering international cuisine with lake views.",
+    "tags": ["fine dining", "lake view", "romantic"]
+  }
+] 
