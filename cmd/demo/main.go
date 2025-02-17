@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"log"
 
@@ -86,7 +87,9 @@ func reportStream(sr *schema.StreamReader[*schema.Message]) {
 		if err != nil {
 			log.Fatalf("recv failed: %v", err)
 		}
-		log.Printf("message[%d]: %+v\n", i, message)
+		// log.Printf("message[%d]: %+v\n", i, message)
+		// log.Printf("%+v", message.Content)
+		fmt.Printf("%+v", message.Content)
 		i++
 	}
 }
