@@ -1,0 +1,121 @@
+{
+  "restaurants": [
+    {
+      "id": "REST001",
+      "name": "楼外楼",
+      "district_id": "XH",
+      "description": "百年老字号，杭帮菜代表",
+      "coordinates": {
+        "latitude": 30.2566,
+        "longitude": 120.1485
+      },
+      "cuisine_type": "杭帮菜",
+      "price_range": {
+        "min": 300,
+        "max": 500,
+        "currency": "CNY",
+        "level": "高端"
+      },
+      "opening_hours": {
+        "start": "10:30",
+        "end": "21:00",
+        "break_time": {
+          "start": "15:00",
+          "end": "16:30"
+        }
+      },
+      "signature_dishes": [
+        "西湖醋鱼",
+        "东坡肉",
+        "龙井虾仁",
+        "叫化童子鸡"
+      ],
+      "features": [
+        "湖景餐厅",
+        "宴会场所",
+        "提供茶位"
+      ],
+      "reservations_required": true,
+      "contact": {
+        "phone": "0571-87969023",
+        "address": "西湖北路30号"
+      }
+    },
+    {
+      "id": "REST002",
+      "name": "知味观",
+      "district_id": "SC",
+      "description": "创建于1913年的杭州老字号",
+      "coordinates": {
+        "latitude": 30.2467,
+        "longitude": 120.1689
+      },
+      "cuisine_type": "杭帮菜",
+      "price_range": {
+        "min": 100,
+        "max": 200,
+        "currency": "CNY",
+        "level": "中等"
+      },
+      "opening_hours": {
+        "start": "07:00",
+        "end": "21:00",
+        "notes": "全天营业"
+      },
+      "signature_dishes": [
+        "小笼包",
+        "片儿川",
+        "葱包桧",
+        "猪肉荷叶粢饭"
+      ],
+      "features": [
+        "早茶",
+        "快餐服务",
+        "外带服务"
+      ],
+      "reservations_required": false,
+      "contact": {
+        "phone": "0571-85167888",
+        "address": "河坊街187号"
+      }
+    },
+    {
+      "id": "REST003",
+      "name": "江南小馆",
+      "district_id": "XH",
+      "description": "创意江南菜，环境优雅",
+      "coordinates": {
+        "latitude": 30.2589,
+        "longitude": 120.1482
+      },
+      "cuisine_type": "创意江南菜",
+      "price_range": {
+        "min": 200,
+        "max": 300,
+        "currency": "CNY",
+        "level": "中高端"
+      },
+      "opening_hours": {
+        "start": "11:30",
+        "end": "22:00",
+        "notes": "周末可能需要等位"
+      },
+      "signature_dishes": [
+        "糖醋小排",
+        "松鼠桂鱼",
+        "茶香虾",
+        "蟹粉豆腐"
+      ],
+      "features": [
+        "花园餐厅",
+        "包厢服务",
+        "适合约会"
+      ],
+      "reservations_required": true,
+      "contact": {
+        "phone": "0571-88888888",
+        "address": "西湖区白堤路28号"
+      }
+    }
+  ]
+}

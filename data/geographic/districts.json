@@ -1,0 +1,62 @@
+{
+  "districts": [
+    {
+      "id": "XH",
+      "name": "西湖区",
+      "description": "杭州最著名的景区所在地，包含西湖景区和灵隐寺等景点",
+      "coordinates": {
+        "latitude": 30.2595,
+        "longitude": 120.1305
+      },
+      "area_km2": 308,
+      "transportation": [
+        "地铁1号线",
+        "地铁2号线"
+      ],
+      "landmarks": [
+        "西湖",
+        "灵隐寺",
+        "龙井村",
+        "断桥"
+      ]
+    },
+    {
+      "id": "SC",
+      "name": "上城区",
+      "description": "杭州主城区，历史文化街区集中地",
+      "coordinates": {
+        "latitude": 30.2427,
+        "longitude": 120.1686
+      },
+      "area_km2": 31.5,
+      "transportation": [
+        "地铁4号线",
+        "地铁7号线"
+      ],
+      "landmarks": [
+        "南宋御街",
+        "河坊街",
+        "吴山广场"
+      ]
+    },
+    {
+      "id": "GS",
+      "name": "拱墅区",
+      "description": "运河文化与现代商业融合区域",
+      "coordinates": {
+        "latitude": 30.3198,
+        "longitude": 120.1422
+      },
+      "area_km2": 87.2,
+      "transportation": [
+        "地铁1号线",
+        "地铁5号线"
+      ],
+      "landmarks": [
+        "运河",
+        "运河文化广场",
+        "拱宸桥"
+      ]
+    }
+  ]
+}

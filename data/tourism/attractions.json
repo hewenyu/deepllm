@@ -1,0 +1,110 @@
+{
+  "attractions": [
+    {
+      "id": "XH001",
+      "name": "西湖",
+      "district_id": "XH",
+      "description": "世界文化遗产，中国十大风景名胜之一",
+      "coordinates": {
+        "latitude": 30.2587,
+        "longitude": 120.1485
+      },
+      "price": {
+        "amount": 0,
+        "currency": "CNY",
+        "notes": "免费开放"
+      },
+      "opening_hours": {
+        "start": "00:00",
+        "end": "24:00",
+        "notes": "全天开放"
+      },
+      "recommended_time": {
+        "hours": 4,
+        "best_times": ["日出时分", "黄昏时分"]
+      },
+      "highlights": [
+        "断桥残雪",
+        "平湖秋月",
+        "花港观鱼",
+        "雷峰塔"
+      ],
+      "tags": ["自然景观", "文化遗产", "摄影胜地"],
+      "crowd_level": {
+        "morning": "中等",
+        "afternoon": "较crowded",
+        "evening": "适中"
+      }
+    },
+    {
+      "id": "XH002",
+      "name": "灵隐寺",
+      "district_id": "XH",
+      "description": "江南佛教圣地，始建于东晋",
+      "coordinates": {
+        "latitude": 30.2461,
+        "longitude": 120.1137
+      },
+      "price": {
+        "amount": 30,
+        "currency": "CNY",
+        "notes": "含飞来峰门票"
+      },
+      "opening_hours": {
+        "start": "07:00",
+        "end": "17:30",
+        "notes": "全年开放"
+      },
+      "recommended_time": {
+        "hours": 2,
+        "best_times": ["上午"]
+      },
+      "highlights": [
+        "大雄宝殿",
+        "飞来峰",
+        "九里云松"
+      ],
+      "tags": ["寺庙", "文化古迹", "佛教圣地"],
+      "crowd_level": {
+        "morning": "较crowded",
+        "afternoon": "中等",
+        "evening": "较少"
+      }
+    },
+    {
+      "id": "SC001",
+      "name": "河坊街",
+      "district_id": "SC",
+      "description": "南宋皇城脚下的繁华街市，现为特色商业街",
+      "coordinates": {
+        "latitude": 30.2467,
+        "longitude": 120.1686
+      },
+      "price": {
+        "amount": 0,
+        "currency": "CNY",
+        "notes": "免费开放"
+      },
+      "opening_hours": {
+        "start": "09:00",
+        "end": "22:00",
+        "notes": "部分商铺营业时间可能不同"
+      },
+      "recommended_time": {
+        "hours": 2,
+        "best_times": ["下午", "傍晚"]
+      },
+      "highlights": [
+        "胡庆余堂",
+        "杭州老字号",
+        "特色小吃"
+      ],
+      "tags": ["商业街", "历史街区", "美食"],
+      "crowd_level": {
+        "morning": "较少",
+        "afternoon": "crowded",
+        "evening": "非常crowded"
+      }
+    }
+  ]
+}

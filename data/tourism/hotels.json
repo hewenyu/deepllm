@@ -1,0 +1,161 @@
+{
+  "hotels": [
+    {
+      "id": "HOTEL001",
+      "name": "杭州西子湖四季酒店",
+      "district_id": "XH",
+      "description": "坐拥西湖景观的奢华酒店",
+      "category": "五星级",
+      "coordinates": {
+        "latitude": 30.2571,
+        "longitude": 120.1489
+      },
+      "price_range": {
+        "min": 2800,
+        "max": 12000,
+        "currency": "CNY",
+        "notes": "淡旺季价格浮动"
+      },
+      "rooms": [
+        {
+          "type": "豪华湖景房",
+          "size_sqm": 45,
+          "price": 3500,
+          "features": ["西湖全景", "高层", "阳台"]
+        },
+        {
+          "type": "行政套房",
+          "size_sqm": 80,
+          "price": 6800,
+          "features": ["独立会客室", "行政酒廊", "管家服务"]
+        }
+      ],
+      "amenities": [
+        "游泳池",
+        "SPA中心",
+        "健身房",
+        "商务中心",
+        "中西餐厅"
+      ],
+      "transportation": {
+        "from_airport": {
+          "taxi_time": "约45分钟",
+          "distance_km": 35
+        },
+        "nearby_stations": [
+          "龙翔桥地铁站",
+          "断桥残雪站"
+        ]
+      },
+      "contact": {
+        "phone": "0571-88298888",
+        "address": "西湖区灵隐路5号",
+        "email": "reservation.hangzhou@fourseasons.com"
+      }
+    },
+    {
+      "id": "HOTEL002",
+      "name": "杭州青芝坞艺术酒店",
+      "district_id": "XH",
+      "description": "富有艺术气息的精品酒店",
+      "category": "精品酒店",
+      "coordinates": {
+        "latitude": 30.2445,
+        "longitude": 120.1278
+      },
+      "price_range": {
+        "min": 800,
+        "max": 2000,
+        "currency": "CNY",
+        "notes": "含早餐"
+      },
+      "rooms": [
+        {
+          "type": "艺术大床房",
+          "size_sqm": 35,
+          "price": 988,
+          "features": ["手绘墙", "落地窗", "茶室"]
+        },
+        {
+          "type": "庭院套房",
+          "size_sqm": 60,
+          "price": 1688,
+          "features": ["私人庭院", "榻榻米", "观景阳台"]
+        }
+      ],
+      "amenities": [
+        "艺术画廊",
+        "茶室",
+        "图书馆",
+        "自行车租赁"
+      ],
+      "transportation": {
+        "from_airport": {
+          "taxi_time": "约50分钟",
+          "distance_km": 40
+        },
+        "nearby_stations": [
+          "玉泉站",
+          "灵隐站"
+        ]
+      },
+      "contact": {
+        "phone": "0571-87965555",
+        "address": "西湖区青芝坞1号",
+        "email": "book@qingzhiwu.com"
+      }
+    },
+    {
+      "id": "HOTEL003",
+      "name": "杭州河坊街如家酒店",
+      "district_id": "SC",
+      "description": "位于历史文化街区的经济型连锁酒店",
+      "category": "三星级",
+      "coordinates": {
+        "latitude": 30.2469,
+        "longitude": 120.1687
+      },
+      "price_range": {
+        "min": 200,
+        "max": 500,
+        "currency": "CNY",
+        "notes": "节假日略有上浮"
+      },
+      "rooms": [
+        {
+          "type": "标准双床房",
+          "size_sqm": 20,
+          "price": 259,
+          "features": ["双床", "免费WiFi", "24小时热水"]
+        },
+        {
+          "type": "商务大床房",
+          "size_sqm": 25,
+          "price": 299,
+          "features": ["大床", "写字台", "电热水壶"]
+        }
+      ],
+      "amenities": [
+        "前台24小时服务",
+        "行李寄存",
+        "自助洗衣房",
+        "商务角"
+      ],
+      "transportation": {
+        "from_airport": {
+          "taxi_time": "约40分钟",
+          "distance_km": 30
+        },
+        "nearby_stations": [
+          "定安路地铁站",
+          "建国北路站"
+        ]
+      },
+      "contact": {
+        "phone": "0571-86789999",
+        "address": "上城区河坊街步行街89号",
+        "email": "service@homeinns.com"
+      }
+    }
+  ]
+}

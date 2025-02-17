@@ -1,0 +1,137 @@
+{
+  "city": "杭州",
+  "update_time": "2025-02-17T13:46:00+08:00",
+  "source": "模拟天气数据",
+  "daily_forecasts": [
+    {
+      "date": "2025-02-18",
+      "weather": {
+        "day": "晴",
+        "night": "多云"
+      },
+      "temperature": {
+        "max": 18,
+        "min": 8,
+        "unit": "°C"
+      },
+      "humidity": {
+        "max": 80,
+        "min": 45,
+        "unit": "%"
+      },
+      "wind": {
+        "direction": "东南风",
+        "speed": {
+          "max": 15,
+          "min": 5,
+          "unit": "km/h"
+        }
+      },
+      "precipitation": {
+        "probability": 10,
+        "amount": 0,
+        "unit": "mm"
+      },
+      "air_quality": {
+        "aqi": 65,
+        "level": "良",
+        "primary_pollutant": "PM2.5"
+      },
+      "suggestion": {
+        "tourism": "适宜",
+        "comfort": "舒适",
+        "notes": "天气晴好，非常适合游览西湖景区"
+      }
+    },
+    {
+      "date": "2025-02-19",
+      "weather": {
+        "day": "多云",
+        "night": "小雨"
+      },
+      "temperature": {
+        "max": 16,
+        "min": 10,
+        "unit": "°C"
+      },
+      "humidity": {
+        "max": 85,
+        "min": 60,
+        "unit": "%"
+      },
+      "wind": {
+        "direction": "东风",
+        "speed": {
+          "max": 20,
+          "min": 8,
+          "unit": "km/h"
+        }
+      },
+      "precipitation": {
+        "probability": 60,
+        "amount": 5.5,
+        "unit": "mm"
+      },
+      "air_quality": {
+        "aqi": 75,
+        "level": "良",
+        "primary_pollutant": "PM10"
+      },
+      "suggestion": {
+        "tourism": "较适宜",
+        "comfort": "较舒适",
+        "notes": "傍晚可能有小雨，建议携带雨具，可以体验雨中西湖的别样风景"
+      }
+    },
+    {
+      "date": "2025-02-20",
+      "weather": {
+        "day": "小雨",
+        "night": "阴"
+      },
+      "temperature": {
+        "max": 15,
+        "min": 9,
+        "unit": "°C"
+      },
+      "humidity": {
+        "max": 90,
+        "min": 70,
+        "unit": "%"
+      },
+      "wind": {
+        "direction": "东北风",
+        "speed": {
+          "max": 25,
+          "min": 10,
+          "unit": "km/h"
+        }
+      },
+      "precipitation": {
+        "probability": 80,
+        "amount": 8.0,
+        "unit": "mm"
+      },
+      "air_quality": {
+        "aqi": 55,
+        "level": "良",
+        "primary_pollutant": "NO2"
+      },
+      "suggestion": {
+        "tourism": "一般",
+        "comfort": "较差",
+        "notes": "雨天建议参观室内景点，如博物馆或茶馆"
+      }
+    }
+  ],
+  "special_notices": [
+    {
+      "type": "旅游建议",
+      "content": "雨季来临，建议准备防雨装备，适当调整出行计划"
+    },
+    {
+      "type": "景点提醒",
+      "content": "雨天西湖景区部分水上项目可能暂停"
+    }
+  ]
+}
