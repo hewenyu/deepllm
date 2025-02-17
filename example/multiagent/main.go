@@ -8,13 +8,15 @@ import (
 	"os"
 	"time"
 
+	"github.com/hewenyu/deepllm/components/agent"
 	"github.com/hewenyu/deepllm/components/agent/coordinator"
+	"github.com/hewenyu/deepllm/config"
 	"github.com/hewenyu/deepllm/internal/data"
 )
 
 func main() {
 	// Initialize data store
-	store := data.NewStore("./data")
+	store := data.NewStore("../../data")
 
 	// Load all data
 	ctx := context.Background()
@@ -22,8 +24,18 @@ func main() {
 		log.Fatalf("Failed to load data: %v", err)
 	}
 
+	// Get configuration
+	cfg := config.GetConfig()
+
+	// Create base agent options
+	agentOpts := &agent.BaseAgentOptions{
+		Config:      cfg,
+		Name:        "TripPlanner",
+		Description: "多智能体旅行规划系统",
+	}
+
 	// Create trip planner
-	planner := coordinator.NewTripPlanner(store)
+	planner := coordinator.NewTripPlanner(agentOpts, store)
 
 	// Create sample trip request
 	req := coordinator.TripPlanRequest{
@@ -98,12 +110,6 @@ func main() {
 			}
 			if len(day.Weather.Precautions) > 0 {
 				fmt.Printf("- 注意事项: %v\n", day.Weather.Precautions)
-			}
-			if len(day.Weather.IndoorOptions) > 0 {
-				fmt.Printf("- 室内选项: %v\n", day.Weather.IndoorOptions)
-			}
-			if len(day.Weather.OutdoorOptions) > 0 {
-				fmt.Printf("- 户外选项: %v\n", day.Weather.OutdoorOptions)
 			}
 		}
 

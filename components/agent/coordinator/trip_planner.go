@@ -3,31 +3,15 @@ package coordinator
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
+	"github.com/hewenyu/deepllm/components/agent"
 	"github.com/hewenyu/deepllm/components/agent/accommodation"
 	"github.com/hewenyu/deepllm/components/agent/dining"
 	"github.com/hewenyu/deepllm/components/agent/weather"
 	"github.com/hewenyu/deepllm/internal/data"
 )
-
-// TripPlanner coordinates multiple agents for trip planning
-type TripPlanner struct {
-	store           *data.Store
-	weatherAgent    *weather.WeatherAgent
-	restaurantAgent *dining.RestaurantAgent
-	hotelAgent      *accommodation.HotelAgent
-}
-
-// NewTripPlanner creates a new trip planner
-func NewTripPlanner(store *data.Store) *TripPlanner {
-	return &TripPlanner{
-		store:           store,
-		weatherAgent:    weather.NewWeatherAgent(store),
-		restaurantAgent: dining.NewRestaurantAgent(store),
-		hotelAgent:      accommodation.NewHotelAgent(store),
-	}
-}
 
 // TripPlanRequest represents a trip planning request
 type TripPlanRequest struct {
@@ -49,6 +33,48 @@ type TripPlanRequest struct {
 	Requirements []string `json:"requirements"` // 特殊需求
 }
 
+// TripPlanner coordinates multiple agents for trip planning
+type TripPlanner struct {
+	store           *data.Store
+	config          *agent.BaseAgentOptions
+	weatherAgent    *weather.WeatherAgent
+	restaurantAgent *dining.RestaurantAgent
+	hotelAgent      *accommodation.HotelAgent
+}
+
+// NewTripPlanner creates a new trip planner
+func NewTripPlanner(cfg *agent.BaseAgentOptions, store *data.Store) *TripPlanner {
+	planner := &TripPlanner{
+		store:  store,
+		config: cfg,
+	}
+
+	// Initialize agents
+	planner.weatherAgent = weather.NewWeatherAgent(agent.BaseAgentOptions{
+		Config:      cfg.Config,
+		Name:        "WeatherAdvisor",
+		Description: "天气与活动建议智能体",
+	}, store)
+
+	// TODO: Initialize other agents with proper configuration
+	// planner.restaurantAgent = ...
+	// planner.hotelAgent = ...
+
+	return planner
+}
+
+// TripPlan represents a complete trip plan
+type TripPlan struct {
+	Overview struct {
+		Duration   int      `json:"duration_days"`
+		TotalCost  float64  `json:"total_cost"`
+		Highlights []string `json:"highlights"`
+	} `json:"overview"`
+	Accommodation *accommodation.HotelRecommendation `json:"accommodation"`
+	DailyPlans    []DailyPlan                        `json:"daily_plans"`
+	Tips          []string                           `json:"tips"`
+}
+
 // DailyPlan represents a single day's itinerary
 type DailyPlan struct {
 	Date       string                        `json:"date"`
@@ -66,18 +92,6 @@ type Activity struct {
 	Attraction *data.Attraction `json:"attraction,omitempty"`
 	Duration   int              `json:"duration_minutes"`
 	Notes      []string         `json:"notes"`
-}
-
-// TripPlan represents a complete trip plan
-type TripPlan struct {
-	Overview struct {
-		Duration   int      `json:"duration_days"`
-		TotalCost  float64  `json:"total_cost"`
-		Highlights []string `json:"highlights"`
-	} `json:"overview"`
-	Accommodation *accommodation.HotelRecommendation `json:"accommodation"`
-	DailyPlans    []DailyPlan                        `json:"daily_plans"`
-	Tips          []string                           `json:"tips"`
 }
 
 // Plan generates a complete trip plan
@@ -103,12 +117,14 @@ func (p *TripPlanner) Plan(ctx context.Context, req TripPlanRequest) (*TripPlan,
 		Requirements: req.Requirements,
 	}
 
-	hotels, err := p.hotelAgent.Recommend(ctx, hotelReq)
-	if err != nil {
-		return nil, fmt.Errorf("hotel recommendation failed: %v", err)
-	}
-	if len(hotels) > 0 {
-		plan.Accommodation = &hotels[0]
+	if p.hotelAgent != nil {
+		hotels, err := p.hotelAgent.Recommend(ctx, hotelReq)
+		if err != nil {
+			return nil, fmt.Errorf("hotel recommendation failed: %v", err)
+		}
+		if len(hotels) > 0 {
+			plan.Accommodation = &hotels[0]
+		}
 	}
 
 	// Generate daily plans
@@ -135,87 +151,20 @@ func (p *TripPlanner) planDay(ctx context.Context, date time.Time, req TripPlanR
 	}
 
 	// Get weather advice
-	weatherAdvice, err := p.weatherAgent.GetAdvice(ctx, date)
+	weatherReq := weather.WeatherRequest{Date: date}
+	weatherResp, err := p.weatherAgent.Process(ctx, weatherReq)
 	if err != nil {
 		return nil, fmt.Errorf("weather advice failed: %v", err)
 	}
-	plan.Weather = weatherAdvice
-
-	// Plan meals
-	lunchReq := dining.DiningRequest{
-		Location:    req.Location,
-		Time:        date.Add(12 * time.Hour),
-		Budget:      req.Budget.Food / 2, // Split budget between lunch and dinner
-		Cuisine:     req.Preferences.Cuisine,
-		PartySize:   req.PartySize,
-		Distance:    2.0,
-		Preferences: req.Preferences.Activities,
+	if advice, ok := weatherResp.Data.(*weather.WeatherAdvice); ok {
+		plan.Weather = advice
 	}
 
-	lunch, err := p.restaurantAgent.Recommend(ctx, lunchReq)
-	if err == nil && len(lunch) > 0 {
-		plan.Dining = append(plan.Dining, lunch[0])
-	}
-
-	dinnerReq := lunchReq
-	dinnerReq.Time = date.Add(18 * time.Hour)
-	dinner, err := p.restaurantAgent.Recommend(ctx, dinnerReq)
-	if err == nil && len(dinner) > 0 {
-		plan.Dining = append(plan.Dining, dinner[0])
-	}
-
-	// Plan activities based on weather
-	p.planActivities(plan, weatherAdvice, req)
+	// TODO: Implement restaurant recommendations and activity planning
+	// Use restaurantAgent to get dining recommendations
+	// Plan activities based on weather and preferences
 
 	return plan, nil
-}
-
-// planActivities plans activities based on weather and preferences
-func (p *TripPlanner) planActivities(plan *DailyPlan, weather *weather.WeatherAdvice, req TripPlanRequest) {
-	// Morning activity (9:00-12:00)
-	if len(weather.Suitable) > 0 || len(weather.OutdoorOptions) > 0 {
-		// Good weather - plan outdoor activity
-		plan.Activities = append(plan.Activities, Activity{
-			Time:     "09:00",
-			Type:     "景点",
-			Duration: 180, // 3 hours
-			Notes:    weather.Precautions,
-		})
-	} else {
-		// Bad weather - plan indoor activity
-		plan.Activities = append(plan.Activities, Activity{
-			Time:     "10:00",
-			Type:     "室内活动",
-			Duration: 120, // 2 hours
-			Notes:    weather.Precautions,
-		})
-	}
-
-	// Afternoon activity (14:00-17:00)
-	if contains(weather.Unsuitable, "长时间户外活动") {
-		// Plan indoor activities
-		plan.Activities = append(plan.Activities, Activity{
-			Time:     "14:00",
-			Type:     "室内活动",
-			Duration: 180,
-			Notes:    append(weather.Precautions, "选择室内景点"),
-		})
-	} else {
-		plan.Activities = append(plan.Activities, Activity{
-			Time:     "14:00",
-			Type:     "景点",
-			Duration: 180,
-			Notes:    weather.Precautions,
-		})
-	}
-
-	// Evening activity (20:00-21:30)
-	plan.Activities = append(plan.Activities, Activity{
-		Time:     "20:00",
-		Type:     "休闲活动",
-		Duration: 90,
-		Notes:    []string{"夜景观赏", "文化体验"},
-	})
 }
 
 // finalizeTrip adds finishing touches to the trip plan
@@ -238,36 +187,12 @@ func (p *TripPlanner) finalizeTrip(plan *TripPlan, req TripPlanRequest) {
 		)
 	}
 
-	// Extract highlights
-	plan.Overview.Highlights = make([]string, 0)
+	// Extract highlights from daily plans
 	for _, day := range plan.DailyPlans {
-		if len(day.Weather.Suitable) > 0 {
-			plan.Overview.Highlights = append(plan.Overview.Highlights,
-				fmt.Sprintf("%s适合：%s", day.Date, join(day.Weather.Suitable, "、")))
+		if day.Weather != nil && len(day.Weather.Suitable) > 0 {
+			highlight := fmt.Sprintf("%s适合：%s", day.Date,
+				strings.Join(day.Weather.Suitable, "、"))
+			plan.Overview.Highlights = append(plan.Overview.Highlights, highlight)
 		}
 	}
-}
-
-// Helper functions
-
-func contains(slice []string, str string) bool {
-	for _, s := range slice {
-		if s == str {
-			return true
-		}
-	}
-	return false
-}
-
-func join(slice []string, sep string) string {
-	if len(slice) == 0 {
-		return ""
-	}
-	if len(slice) == 1 {
-		return slice[0]
-	}
-	if len(slice) == 2 {
-		return slice[0] + sep + slice[1]
-	}
-	return slice[0] + sep + slice[1] + "等"
 }

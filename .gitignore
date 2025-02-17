@@ -23,6 +23,28 @@ vendor/
 # Generated files
 trip_plan.json
 
+# Environment files
+.env
+.env.local
+.env.*.local
+
 # OS specific files
 .DS_Store
 Thumbs.db
+
+# Log files
+*.log
+logs/
+
+# Binary output directories
+bin/
+dist/
+build/
+
+# Air live reload
+.air.toml
+tmp/
+
+# Local development overrides
+override.yaml
+docker-compose.override.yml

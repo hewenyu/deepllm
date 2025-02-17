@@ -2,21 +2,76 @@ package weather
 
 import (
 	"context"
+	"fmt"
 	"time"
 
+	"github.com/hewenyu/deepllm/components/agent"
 	"github.com/hewenyu/deepllm/internal/data"
 )
 
 // WeatherAgent specializes in weather-based activity recommendations
 type WeatherAgent struct {
+	*agent.BaseAgent
 	store *data.Store
+	name  string
+	desc  string
 }
 
 // NewWeatherAgent creates a new weather advisor agent
-func NewWeatherAgent(store *data.Store) *WeatherAgent {
+func NewWeatherAgent(opts agent.BaseAgentOptions, store *data.Store) *WeatherAgent {
 	return &WeatherAgent{
-		store: store,
+		BaseAgent: agent.NewBaseAgent(opts.Config),
+		store:     store,
+		name:      opts.Name,
+		desc:      opts.Description,
 	}
+}
+
+// Initialize implements agent.AgentInterface
+func (a *WeatherAgent) Initialize(ctx context.Context) error {
+	if a.store == nil {
+		return fmt.Errorf("data store is not initialized")
+	}
+	return nil
+}
+
+// Name implements agent.AgentInterface
+func (a *WeatherAgent) Name() string {
+	if a.name == "" {
+		return "WeatherAdvisor"
+	}
+	return a.name
+}
+
+// Description implements agent.AgentInterface
+func (a *WeatherAgent) Description() string {
+	if a.desc == "" {
+		return "天气与活动建议智能体"
+	}
+	return a.desc
+}
+
+// Process implements agent.AgentInterface
+func (a *WeatherAgent) Process(ctx context.Context, request interface{}) (agent.AgentResponse, error) {
+	req, ok := request.(WeatherRequest)
+	if !ok {
+		return agent.AgentResponse{}, fmt.Errorf("invalid request type")
+	}
+
+	advice, err := a.GetAdvice(ctx, req.Date)
+	if err != nil {
+		return agent.AgentResponse{}, err
+	}
+
+	return agent.AgentResponse{
+		Success: true,
+		Data:    advice,
+	}, nil
+}
+
+// WeatherRequest represents a request for weather advice
+type WeatherRequest struct {
+	Date time.Time `json:"date"`
 }
 
 // WeatherAdvice contains weather-based recommendations
@@ -33,161 +88,71 @@ type WeatherAdvice struct {
 func (a *WeatherAgent) GetAdvice(ctx context.Context, date time.Time) (*WeatherAdvice, error) {
 	forecast := a.store.GetWeatherForecast()
 	if forecast == nil || len(forecast.DailyForecasts) == 0 {
-		return nil, nil
+		return nil, fmt.Errorf("no weather forecast available")
 	}
+
+	dateStr := date.Format("2006-01-02")
 
 	// Find matching forecast
 	var todayForecast *data.DailyForecast
 	for _, f := range forecast.DailyForecasts {
-		if f.Date == date.Format("2006-01-02") {
+		if f.Date == dateStr {
 			todayForecast = &f
 			break
 		}
 	}
 
 	if todayForecast == nil {
-		return nil, nil
+		return nil, fmt.Errorf("no forecast found for date: %s", dateStr)
 	}
 
 	advice := &WeatherAdvice{
 		Weather: todayForecast,
 	}
 
-	// Generate activity recommendations based on weather conditions
-	a.generateActivityRecommendations(todayForecast, advice)
+	// Generate activity recommendations using LLM
+	prompt := fmt.Sprintf(`Based on the following weather conditions, suggest activities:
+Weather: %s to %s
+Temperature: %.1f°C to %.1f°C
+Rain Probability: %.0f%%
+Wind Speed: %.0f-%.0f%s
+Air Quality: %s (AQI: %d)
+
+Please provide:
+1. Suitable outdoor activities
+2. Activities to avoid
+3. Safety precautions
+4. Indoor alternatives
+5. Recommended outdoor activities if weather permits`,
+		todayForecast.Weather.Day,
+		todayForecast.Weather.Night,
+		todayForecast.Temperature.Min,
+		todayForecast.Temperature.Max,
+		todayForecast.Precipitation.Probability,
+		todayForecast.Wind.Speed.Min,
+		todayForecast.Wind.Speed.Max,
+		todayForecast.Wind.Speed.Unit,
+		todayForecast.AirQuality.Level,
+		todayForecast.AirQuality.AQI,
+	)
+
+	var result struct {
+		Suitable       []string `json:"suitable"`
+		Unsuitable     []string `json:"unsuitable"`
+		Precautions    []string `json:"precautions"`
+		IndoorOptions  []string `json:"indoor_options"`
+		OutdoorOptions []string `json:"outdoor_options"`
+	}
+
+	if err := a.GenerateStructured(ctx, prompt, &result); err != nil {
+		return nil, fmt.Errorf("failed to generate recommendations: %v", err)
+	}
+
+	advice.Suitable = result.Suitable
+	advice.Unsuitable = result.Unsuitable
+	advice.Precautions = result.Precautions
+	advice.IndoorOptions = result.IndoorOptions
+	advice.OutdoorOptions = result.OutdoorOptions
 
 	return advice, nil
-}
-
-// generateActivityRecommendations generates activity recommendations based on weather
-func (a *WeatherAgent) generateActivityRecommendations(forecast *data.DailyForecast, advice *WeatherAdvice) {
-	// Check weather conditions
-	isRainy := contains([]string{"小雨", "中雨", "大雨"}, forecast.Weather.Day)
-	isSunny := contains([]string{"晴", "多云"}, forecast.Weather.Day)
-	isHot := forecast.Temperature.Max > 30
-	isCold := forecast.Temperature.Min < 10
-	isWindy := false
-	if speed := forecast.Wind.Speed; speed.Max > 30 {
-		isWindy = true
-	}
-	isPoorAirQuality := forecast.AirQuality.AQI > 150
-
-	// Generate recommendations
-	if isRainy {
-		advice.Unsuitable = append(advice.Unsuitable,
-			"户外徒步",
-			"西湖游船",
-			"户外摄影",
-		)
-		advice.Precautions = append(advice.Precautions,
-			"携带雨具",
-			"注意路滑",
-			"避免湿鞋",
-		)
-		advice.IndoorOptions = append(advice.IndoorOptions,
-			"博物馆参观",
-			"茶馆品茶",
-			"室内购物",
-		)
-	}
-
-	if isSunny && !isHot {
-		advice.Suitable = append(advice.Suitable,
-			"西湖游船",
-			"灵隐寺参观",
-			"龙井茶园",
-		)
-		advice.Precautions = append(advice.Precautions,
-			"做好防晒",
-			"补充水分",
-		)
-		advice.OutdoorOptions = append(advice.OutdoorOptions,
-			"徒步西湖",
-			"城市观光",
-			"公园漫步",
-		)
-	}
-
-	if isHot {
-		advice.Unsuitable = append(advice.Unsuitable,
-			"长时间户外活动",
-			"徒步登山",
-		)
-		advice.Precautions = append(advice.Precautions,
-			"避免中午外出",
-			"防暑降温",
-			"及时补水",
-		)
-		advice.IndoorOptions = append(advice.IndoorOptions,
-			"博物馆",
-			"商场购物",
-			"室内娱乐",
-		)
-	}
-
-	if isCold {
-		advice.Precautions = append(advice.Precautions,
-			"注意保暖",
-			"准备厚衣物",
-		)
-		advice.IndoorOptions = append(advice.IndoorOptions,
-			"温泉体验",
-			"室内景点",
-		)
-	}
-
-	if isWindy {
-		advice.Unsuitable = append(advice.Unsuitable,
-			"登高望远",
-			"游船活动",
-		)
-		advice.Precautions = append(advice.Precautions,
-			"注意防风",
-			"避免易飞物品",
-		)
-	}
-
-	if isPoorAirQuality {
-		advice.Unsuitable = append(advice.Unsuitable,
-			"户外运动",
-			"长时间户外活动",
-		)
-		advice.Precautions = append(advice.Precautions,
-			"佩戴口罩",
-			"减少户外活动",
-		)
-		advice.IndoorOptions = append(advice.IndoorOptions,
-			"室内活动为主",
-			"避免剧烈运动",
-		)
-	}
-
-	// Always provide some indoor options
-	if len(advice.IndoorOptions) == 0 {
-		advice.IndoorOptions = []string{
-			"博物馆参观",
-			"茶馆品茶",
-			"特色餐厅",
-			"商场购物",
-		}
-	}
-
-	// Always provide some outdoor options if weather permits
-	if len(advice.OutdoorOptions) == 0 && !isRainy && !isPoorAirQuality && !isWindy {
-		advice.OutdoorOptions = []string{
-			"西湖景区游览",
-			"灵隐寺参观",
-			"城市观光",
-		}
-	}
-}
-
-// Helper function to check if a string is in a slice
-func contains(slice []string, str string) bool {
-	for _, s := range slice {
-		if s == str {
-			return true
-		}
-	}
-	return false
 }
