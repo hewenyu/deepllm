@@ -1,76 +1,76 @@
 [
   {
     "id": "gh001",
-    "name": "Grand Hyatt Hangzhou",
+    "name": "杭州凯悦酒店",
     "location": {
-      "name": "Grand Hyatt",
+      "name": "杭州凯悦",
       "latitude": 30.2584,
       "longitude": 120.1552
     },
     "stars": 5,
     "price_per_night": 1800.0,
-    "amenities": ["lake view", "spa", "pool", "gym", "wifi", "restaurant", "bar", "room service", "wheelchair accessible"],
-    "description": "Luxury hotel offering stunning views of West Lake, featuring world-class amenities and exceptional service.",
+    "amenities": ["湖景房", "水疗中心", "游泳池", "健身房", "免费WiFi", "餐厅", "酒吧", "客房服务", "无障碍设施"],
+    "description": "豪华五星级酒店，拥有绝美西湖景观，提供世界级设施和卓越服务。",
     "rating": 4.8,
     "images": ["grand_hyatt_1.jpg", "grand_hyatt_2.jpg"]
   },
   {
     "id": "fs001",
-    "name": "Four Seasons Hotel Hangzhou at West Lake",
+    "name": "杭州西子湖四季酒店",
     "location": {
-      "name": "Four Seasons",
+      "name": "西子湖四季",
       "latitude": 30.2433,
       "longitude": 120.1289
     },
     "stars": 5,
     "price_per_night": 2200.0,
-    "amenities": ["lake view", "garden", "spa", "pool", "gym", "wifi", "restaurant", "bar", "room service"],
-    "description": "Set amidst traditional Chinese gardens on the edge of West Lake, offering unparalleled luxury and tranquility.",
+    "amenities": ["湖景房", "私家园林", "水疗中心", "游泳池", "健身房", "免费WiFi", "餐厅", "酒吧", "客房服务"],
+    "description": "坐落于西湖边的传统园林中，提供无与伦比的奢华体验和宁静氛围。",
     "rating": 4.9,
     "images": ["four_seasons_1.jpg", "four_seasons_2.jpg"]
   },
   {
     "id": "wh001",
-    "name": "Wyndham Grand Plaza Royale Hangzhou",
+    "name": "杭州温德姆至尊豪廷大酒店",
     "location": {
-      "name": "Wyndham Grand",
+      "name": "温德姆至尊",
       "latitude": 30.2676,
       "longitude": 120.1523
     },
     "stars": 4,
     "price_per_night": 800.0,
-    "amenities": ["wifi", "restaurant", "gym", "business center", "room service", "wheelchair accessible"],
-    "description": "Contemporary hotel in the heart of Hangzhou, offering comfortable accommodations and modern amenities.",
+    "amenities": ["免费WiFi", "餐厅", "健身房", "商务中心", "客房服务", "无障碍设施"],
+    "description": "位于杭州市中心的现代化酒店，提供舒适住宿和完善设施。",
     "rating": 4.4,
     "images": ["wyndham_1.jpg", "wyndham_2.jpg"]
   },
   {
     "id": "mw001",
-    "name": "Merchant Marco Hotel",
+    "name": "马可波罗酒店",
     "location": {
-      "name": "Merchant Marco",
+      "name": "马可波罗",
       "latitude": 30.2589,
       "longitude": 120.1687
     },
     "stars": 4,
     "price_per_night": 600.0,
-    "amenities": ["wifi", "restaurant", "business center", "laundry service", "wheelchair accessible"],
-    "description": "Boutique hotel combining modern comfort with traditional Chinese elements, located near shopping areas.",
+    "amenities": ["免费WiFi", "餐厅", "商务中心", "洗衣服务", "无障碍设施"],
+    "description": "融合现代舒适与中国传统元素的精品酒店，毗邻购物区。",
     "rating": 4.3,
     "images": ["merchant_marco_1.jpg", "merchant_marco_2.jpg"]
   },
   {
     "id": "zh001",
-    "name": "Zhejiang Hotel Hangzhou",
+    "name": "浙江大酒店",
     "location": {
-      "name": "Zhejiang Hotel",
+      "name": "浙江大酒店",
       "latitude": 30.2542,
       "longitude": 120.1675
     },
     "stars": 3,
     "price_per_night": 400.0,
-    "amenities": ["wifi", "restaurant", "parking", "laundry service"],
-    "description": "Traditional hotel offering good value accommodations with convenient access to West Lake and shopping areas.",
+    "amenities": ["免费WiFi", "餐厅", "停车场", "洗衣服务"],
+    "description": "传统酒店，性价比高，便捷到达西湖和购物区。",
     "rating": 4.1,
     "images": ["zhejiang_hotel_1.jpg", "zhejiang_hotel_2.jpg"]
   }

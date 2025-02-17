@@ -1,81 +1,81 @@
 [
   {
     "id": "wl001",
-    "name": "West Lake",
+    "name": "西湖",
     "location": {
-      "name": "West Lake",
+      "name": "西湖",
       "latitude": 30.2587,
       "longitude": 120.1315
     },
-    "description": "A UNESCO World Heritage site featuring beautiful gardens, temples, pagodas, and artificial islands.",
-    "category": ["natural", "cultural", "outdoor"],
+    "description": "联合国世界文化遗产，以优美的园林景观、寺庙、宝塔和人工岛屿闻名于世。",
+    "category": ["自然风光", "人文景观", "户外活动"],
     "price": 0.0,
     "open_hours": ["00:00-24:00"],
-    "tags": ["scenic", "peaceful", "historical"],
+    "tags": ["风景名胜", "休闲游览", "历史文化"],
     "rating": 4.8,
     "images": ["west_lake_1.jpg", "west_lake_2.jpg"]
   },
   {
     "id": "lft001",
-    "name": "Lingyin Temple",
+    "name": "灵隐寺",
     "location": {
-      "name": "Lingyin Temple",
+      "name": "灵隐寺",
       "latitude": 30.2421,
       "longitude": 120.0935
     },
-    "description": "One of the largest and most visited Buddhist temples in China, featuring ancient architecture and rock carvings.",
-    "category": ["cultural", "religious", "indoor"],
+    "description": "中国最大和最受欢迎的佛教寺院之一，以古代建筑和石窟造像闻名。",
+    "category": ["人文景观", "宗教场所", "室内景点"],
     "price": 30.0,
     "open_hours": ["07:00-17:30"],
-    "tags": ["buddhist", "historical", "spiritual"],
+    "tags": ["佛教文化", "历史古迹", "精神文化"],
     "rating": 4.6,
     "images": ["lingyin_temple_1.jpg", "lingyin_temple_2.jpg"]
   },
   {
     "id": "lbp001",
-    "name": "Leifeng Pagoda",
+    "name": "雷峰塔",
     "location": {
-      "name": "Leifeng Pagoda",
+      "name": "雷峰塔",
       "latitude": 30.2379,
       "longitude": 120.1489
     },
-    "description": "A five-story tall tower offering panoramic views of West Lake and its surroundings.",
-    "category": ["cultural", "historical", "outdoor"],
+    "description": "五层高的宝塔，可以俯瞰西湖全景和周边美景。",
+    "category": ["人文景观", "历史古迹", "户外景点"],
     "price": 40.0,
     "open_hours": ["08:00-17:30"],
-    "tags": ["scenic", "historical", "architectural"],
+    "tags": ["观景胜地", "历史文化", "建筑艺术"],
     "rating": 4.5,
     "images": ["leifeng_pagoda_1.jpg", "leifeng_pagoda_2.jpg"]
   },
   {
     "id": "xhs001",
-    "name": "Xixi National Wetland Park",
+    "name": "西溪国家湿地公园",
     "location": {
-      "name": "Xixi Wetland",
+      "name": "西溪湿地",
       "latitude": 30.2728,
       "longitude": 120.0632
     },
-    "description": "The first and only national wetland park in China, combining urban life, farming, and culture.",
-    "category": ["natural", "cultural", "outdoor"],
+    "description": "中国首个也是唯一的国家级湿地公园，融合了城市生活、农耕文化和自然生态。",
+    "category": ["自然风光", "人文景观", "户外活动"],
     "price": 80.0,
     "open_hours": ["08:00-17:00"],
-    "tags": ["wetland", "ecological", "peaceful"],
+    "tags": ["湿地生态", "自然保护", "休闲游览"],
     "rating": 4.4,
     "images": ["xixi_wetland_1.jpg", "xixi_wetland_2.jpg"]
   },
   {
     "id": "qhf001",
-    "name": "Qinghefang Ancient Street",
+    "name": "清河坊古街",
     "location": {
-      "name": "Qinghefang Street",
+      "name": "清河坊街",
       "latitude": 30.2665,
       "longitude": 120.1688
     },
-    "description": "A well-preserved ancient street showcasing traditional architecture, local snacks, and handicrafts.",
-    "category": ["cultural", "shopping", "outdoor"],
+    "description": "保存完好的古街，展现传统建筑风貌，汇集各类特色小吃和手工艺品。",
+    "category": ["人文景观", "购物街区", "户外景点"],
     "price": 0.0,
     "open_hours": ["08:30-22:00"],
-    "tags": ["shopping", "food", "historical"],
+    "tags": ["特色购物", "美食街区", "历史文化"],
     "rating": 4.3,
     "images": ["qinghefang_1.jpg", "qinghefang_2.jpg"]
   }

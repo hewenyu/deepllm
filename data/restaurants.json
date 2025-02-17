@@ -1,77 +1,77 @@
 [
   {
     "id": "lw001",
-    "name": "Lou Wai Lou",
+    "name": "楼外楼",
     "location": {
-      "name": "Lou Wai Lou",
+      "name": "楼外楼",
       "latitude": 30.2576,
       "longitude": 120.1485
     },
-    "cuisine": ["local", "hangzhou", "chinese"],
+    "cuisine": ["杭帮菜", "本地特色", "中餐"],
     "price_range": "$$$",
     "rating": 4.7,
     "open_hours": ["10:30-14:00", "16:30-21:00"],
-    "description": "A time-honored restaurant serving authentic Hangzhou cuisine with a view of West Lake.",
-    "tags": ["traditional", "lake view", "famous"]
+    "description": "百年老字号，提供正宗杭州菜，临湖而建，景色优美。",
+    "tags": ["传统名店", "湖景餐厅", "知名品牌"]
   },
   {
     "id": "gp001",
-    "name": "Grandma's Home",
+    "name": "外婆家",
     "location": {
-      "name": "Grandma's Home",
+      "name": "外婆家",
       "latitude": 30.2668,
       "longitude": 120.1686
     },
-    "cuisine": ["local", "homestyle", "chinese"],
+    "cuisine": ["杭帮菜", "家常菜", "中餐"],
     "price_range": "$$",
     "rating": 4.5,
     "open_hours": ["10:00-22:00"],
-    "description": "Popular local chain restaurant serving homestyle Hangzhou dishes.",
-    "tags": ["casual", "family-friendly", "affordable"]
+    "description": "深受欢迎的本地连锁餐厅，提供正宗杭州家常菜。",
+    "tags": ["休闲就餐", "亲子友好", "性价比高"]
   },
   {
     "id": "zh001",
-    "name": "Zhang Sheng Ji",
+    "name": "张生记",
     "location": {
-      "name": "Zhang Sheng Ji",
+      "name": "张生记",
       "latitude": 30.2662,
       "longitude": 120.1690
     },
-    "cuisine": ["local", "seafood", "chinese"],
+    "cuisine": ["杭帮菜", "海鲜", "中餐"],
     "price_range": "$$",
     "rating": 4.4,
     "open_hours": ["10:30-21:30"],
-    "description": "Famous for its fresh seafood and local specialties.",
-    "tags": ["seafood", "local favorite", "traditional"]
+    "description": "以新鲜海鲜和本地特色菜品闻名。",
+    "tags": ["海鲜美食", "本地推荐", "传统风味"]
   },
   {
     "id": "wf001",
-    "name": "Waipojia",
+    "name": "外婆家",
     "location": {
-      "name": "Waipojia",
+      "name": "外婆家",
       "latitude": 30.2589,
       "longitude": 120.1687
     },
-    "cuisine": ["local", "homestyle", "chinese"],
+    "cuisine": ["杭帮菜", "家常菜", "中餐"],
     "price_range": "$$",
     "rating": 4.3,
     "open_hours": ["10:30-21:00"],
-    "description": "Cozy restaurant serving authentic local dishes in a traditional setting.",
-    "tags": ["homestyle", "casual", "authentic"]
+    "description": "温馨的餐厅环境，提供地道的本地家常菜。",
+    "tags": ["家常菜", "休闲用餐", "地道美食"]
   },
   {
     "id": "hy001",
-    "name": "Hyatt 28",
+    "name": "凯悦28楼",
     "location": {
-      "name": "Hyatt 28",
+      "name": "凯悦28楼",
       "latitude": 30.2584,
       "longitude": 120.1552
     },
-    "cuisine": ["international", "fusion", "fine dining"],
+    "cuisine": ["国际美食", "创意菜", "精致料理"],
     "price_range": "$$$$",
     "rating": 4.6,
     "open_hours": ["06:30-22:30"],
-    "description": "Upscale restaurant in Grand Hyatt offering international cuisine with lake views.",
-    "tags": ["fine dining", "lake view", "romantic"]
+    "description": "位于杭州凯悦酒店的高端餐厅，提供国际美食，可欣赏湖景。",
+    "tags": ["精致餐饮", "湖景餐厅", "浪漫约会"]
   }
 ] 

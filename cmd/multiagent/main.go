@@ -36,45 +36,41 @@ func main() {
 	tools := []mock.Tool{
 		mock.NewMockTool(
 			"search_attractions",
-			"Search for attractions near a location",
+			"搜索附近的景点",
 			func(ctx context.Context, args map[string]interface{}) (map[string]interface{}, error) {
-				// Mock implementation
 				return map[string]interface{}{
 					"status": "success",
-					"data":   "Mock attraction data",
+					"data":   "模拟景点数据",
 				}, nil
 			},
 		),
 		mock.NewMockTool(
 			"search_restaurants",
-			"Search for restaurants near a location",
+			"搜索附近的餐厅",
 			func(ctx context.Context, args map[string]interface{}) (map[string]interface{}, error) {
-				// Mock implementation
 				return map[string]interface{}{
 					"status": "success",
-					"data":   "Mock restaurant data",
+					"data":   "模拟餐厅数据",
 				}, nil
 			},
 		),
 		mock.NewMockTool(
 			"search_hotels",
-			"Search for hotels near a location",
+			"搜索附近的酒店",
 			func(ctx context.Context, args map[string]interface{}) (map[string]interface{}, error) {
-				// Mock implementation
 				return map[string]interface{}{
 					"status": "success",
-					"data":   "Mock hotel data",
+					"data":   "模拟酒店数据",
 				}, nil
 			},
 		),
 		mock.NewMockTool(
 			"get_weather",
-			"Get weather forecast for a location",
+			"获取天气预报",
 			func(ctx context.Context, args map[string]interface{}) (map[string]interface{}, error) {
-				// Mock implementation
 				return map[string]interface{}{
 					"status": "success",
-					"data":   "Mock weather data",
+					"data":   "模拟天气数据",
 				}, nil
 			},
 		),
@@ -88,7 +84,7 @@ func main() {
 		StartDate: time.Now().Add(24 * time.Hour),
 		EndDate:   time.Now().Add(72 * time.Hour),
 		Location: data.Location{
-			Name:      "West Lake",
+			Name:      "西湖",
 			Latitude:  30.2587,
 			Longitude: 120.1315,
 		},
@@ -108,21 +104,21 @@ func main() {
 			Cuisine    []string `json:"cuisine"`
 			Hotel      []string `json:"hotel"`
 		}{
-			Activities: []string{"sightseeing", "shopping", "cultural"},
-			Cuisine:    []string{"local", "seafood"},
-			Hotel:      []string{"luxury", "lake view"},
+			Activities: []string{"观光", "购物", "文化"},
+			Cuisine:    []string{"本地菜", "海鲜"},
+			Hotel:      []string{"豪华", "湖景"},
 		},
 		PartySize:    2,
-		Requirements: []string{"wheelchair accessible"},
+		Requirements: []string{"无障碍设施"},
 	}
 
 	// Process the request
 	ctx := context.Background()
 	result, err := coordinatorAgent.Process(ctx, request)
 	if err != nil {
-		log.Fatalf("Failed to process request: %v", err)
+		log.Fatalf("处理请求失败: %v", err)
 	}
 
 	// Print the result
-	fmt.Printf("Trip Plan:\n%s\n", result.(*mock.Message).Content)
+	fmt.Printf("行程规划:\n%s\n", result.(*mock.Message).Content)
 }
